@@ -177,6 +177,12 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AcademicsLibrary\AcademicsLibrary.csproj">
+      <Project>{3f362865-2ba0-4e1f-a777-58d566c92020}</Project>
+      <Name>AcademicsLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
