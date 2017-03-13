@@ -41,6 +41,7 @@ namespace Template10TestApp.Views
 
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
+            var x = 5;
             login = await DataManager.LoginAsync(campus, RegNo.Text, Password.Password);
             if (login)
             {
