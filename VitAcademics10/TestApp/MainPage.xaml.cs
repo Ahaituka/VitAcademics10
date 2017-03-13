@@ -32,7 +32,10 @@ namespace TestApp
 
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
-          
+
+            campus.Text = "vellore";
+            reg.Text = "14bce0725";
+            pass.Text = "Shubham@990";
             MessageDialog.ShowDialog(await NetworkService.Login(campus.Text, reg.Text, pass.Text));
 
         }

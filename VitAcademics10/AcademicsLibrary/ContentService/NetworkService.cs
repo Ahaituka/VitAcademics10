@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AcademicsLibrary.DataModel;
+using Newtonsoft.Json;
 
 namespace AcademicsLibrary.NetworkService
 {
@@ -19,7 +20,7 @@ namespace AcademicsLibrary.NetworkService
         private static Windows.Web.Http.HttpResponseMessage httpResponse = new Windows.Web.Http.HttpResponseMessage();
 
 
-        public static async Task<string> Login(string campus, string reg, string pass)
+        public static async Task<User> Login(string campus, string reg, string pass)
         {
             string httpResponseBody = "";
             var user = new User(campus, reg, pass);
@@ -34,13 +35,20 @@ namespace AcademicsLibrary.NetworkService
                 string uriString = BASE_URI_STRING + String.Format(LOGIN_STRING_FORMAT, campus);
                 httpResponse = await httpClient.PostAsync(new Uri(uriString), postContent);
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                return httpResponseBody;
+                User _user = JsonConvert.DeserializeObject<User>(httpResponseBody);                
+                //  User __user = JsonConvert.DeserializeObject<User>(httpResponse);               
+                var __user = new User(campus, reg, pass,_user.status.code,_user.status.message);
+                return _user;
+
             }
 
             catch (Exception e)
             {
+                var error = new User();
+                error.status.code = 5;
                 httpResponseBody = "Error: " + e.HResult.ToString("X") + " Message: " + e.Message;
-                return httpResponseBody;
+                error.status.message = httpResponseBody;
+                return error;
             }
         }
         public static async Task<string> Refresh(string campus,string reg,string pass)
