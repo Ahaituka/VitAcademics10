@@ -10,33 +10,45 @@
     <Page.Background>
         <ImageBrush Stretch="Fill" />
     </Page.Background>
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="ms-appx:///Assets/Book.jpg" Stretch="Fill" />
-        </Grid.Background>
-
-        <StackPanel Margin="90">
-
-            <TextBox
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image Source="ms-appx:///Assets/DarkGray.png" Stretch="UniformToFill" Grid.RowSpan="2" />
+        <TextBlock Text="VITAcademics10"
+                   Grid.RowSpan="2"
+                   Grid.Column="0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" 
+                   TextWrapping="NoWrap" RequestedTheme="Dark" FontSize="22" FontWeight="Bold"
+                   
+                   />
+        <Image Source ="ms-appx:///Assets/AppLogo.png" Grid.Column="1" Grid.Row="0" />
+        <Viewbox Grid.Column="1" Margin="30" Grid.Row="1">
+            <StackPanel>
+                <TextBox
                 Name="RegNo"
                 Grid.Row="0"
                 Grid.ColumnSpan="2"
-                Margin="10"
+                Margin="0,0,0,5"
                 controls:TextBoxMask.Mask=""
-                Background="{ThemeResource JumpListDefaultEnabledBackground}"
-                BorderBrush="White"
                 PlaceholderText="Registration Number"
-                SelectionHighlightColor="#FF9CBEDA" />
-            <PasswordBox
+                />
+                <PasswordBox
                 x:Name="Password"
                 Grid.Row="1"
                 Grid.ColumnSpan="2"
-                Margin="10"
-                Background="{ThemeResource JumpListDefaultEnabledBackground}"
-                PlaceholderText="Password" />
+                Margin="0,5,0,0"
+                PlaceholderText="Password"/>
 
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <RadioButton
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <RadioButton
                     x:Name="Radio_Vellore"
                     Grid.Row="2"
                     Grid.Column="0"
@@ -47,7 +59,7 @@
                     VerticalAlignment="Top"
                     Content="Vellore"
                     GroupName="campus" />
-                <RadioButton
+                    <RadioButton
                     x:Name="Radio_Chennai"
                     Grid.Row="2"
                     Checked="Radio_Vellore_Checked"
@@ -58,8 +70,8 @@
                     VerticalAlignment="Top"
                     Content="Chennai"
                     GroupName="campus" />
-            </StackPanel>
-            <Button
+                </StackPanel>
+                <Button
                 x:Name="Login_Button"
                 Grid.Row="3"
                 Grid.ColumnSpan="2"
@@ -71,7 +83,20 @@
                 Click="Login_Click"
                 Content="Login"
                 Foreground="White" />
-        </StackPanel>
+                <Button
+                x:Name="Refresh_Button"
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                Width="100"
+                Height="32"
+                HorizontalAlignment="Stretch"
+                Background="#FF1E4D7C"
+                BorderBrush="#FF154EC9"
+                Click="Refresh_Button_Click"
+                Content="Refresh"
+                Foreground="White" />
+            </StackPanel>
+        </Viewbox>
 
 
 

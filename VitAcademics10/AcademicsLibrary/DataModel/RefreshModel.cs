@@ -1,0 +1,195 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AcademicsLibrary.DataModel
+{
+    public class RefreshModel
+    {
+        public class Timing
+        {
+            public int day { get; set; }
+            public string start_time { get; set; }
+            public string end_time { get; set; }
+        }
+
+        public class Detail
+        {
+            public int sl { get; set; }
+            public int class_units { get; set; }
+            public string date { get; set; }
+            public string reason { get; set; }
+            public string slot { get; set; }
+            public string status { get; set; }
+        }
+
+        public class Attendance
+        {
+            public int attendance_percentage { get; set; }
+            public int attended_classes { get; set; }
+            public List<Detail> details { get; set; }
+            public string registration_date { get; set; }
+            public int total_classes { get; set; }
+        }
+
+        public class Assessment
+        {
+            public string title { get; set; }
+            public int max_marks { get; set; }
+            public int weightage { get; set; }
+            public string conducted_on { get; set; }
+            public string status { get; set; }
+            public int scored_marks { get; set; }
+            public double scored_percentage { get; set; }
+        }
+
+        public class Marks
+        {
+            public List<Assessment> assessments { get; set; }
+            public int max_marks { get; set; }
+            public int max_percentage { get; set; }
+            public int scored_marks { get; set; }
+            public double scored_percentage { get; set; }
+        }
+
+        public class Cours
+        {
+            public int class_number { get; set; }
+            public string course_code { get; set; }
+            public string course_mode { get; set; }
+            public string course_option { get; set; }
+            public string course_title { get; set; }
+            public string subject_type { get; set; }
+            public string faculty { get; set; }
+            public string ltpc { get; set; }
+            public string registration_status { get; set; }
+            public string slot { get; set; }
+            public string venue { get; set; }
+            public string bill_date { get; set; }
+            public string bill_number { get; set; }
+            public string project_title { get; set; }
+            public List<Timing> timings { get; set; }
+            public Attendance attendance { get; set; }
+            public Marks marks { get; set; }
+        }
+
+        public class GradeSummary
+        {
+            public string __invalid_name__Agrades { get; set; }
+
+        }
+
+
+        public class SubHistory
+        {
+            public string course_title { get; set; }
+            public string course_type { get; set; }
+            public int credit { get; set; }
+            public string grade { get; set; }
+        }
+
+        public class History1
+        {
+            public SubHistory SubHistory { get; set; }
+        }
+
+        public class History2
+        {
+            public double cgpa { get; set; }
+            public int __invalid_name__creditsearned { get; set; }
+            public int __invalid_name__creditsregistered { get; set; }
+            public string rank { get; set; }
+        }
+
+        public class AcademicHistory
+        {
+            public GradeSummary __invalid_name__gradesummary { get; set; }
+            public History1 __invalid_name__history1 { get; set; }
+            public History2 __invalid_name__history2 { get; set; }
+            public string status { get; set; }
+        }
+
+        public class FacultyDet
+        {
+            public string Designation { get; set; }
+            public string __invalid_name__EmailId { get; set; }
+            public string __invalid_name__IntercomNo { get; set; }
+            public string __invalid_name__MobileNoPhoneNo { get; set; }
+            public string Name { get; set; }
+            public string __invalid_name__RoomNo { get; set; }
+            public string School { get; set; }
+            public string photo { get; set; }
+        }
+
+        public class FacultyAdvisor
+        {
+            public string status { get; set; }
+            public FacultyDet faculty_det { get; set; }
+        }
+
+
+
+        public class Cat1
+        {
+            public Cat1course excourse { get; set; }
+        }
+
+
+
+        public class Cat1course
+        {
+            public string crTitle { get; set; }
+            public string slot { get; set; }
+            public string date { get; set; }
+            public string day { get; set; }
+            public string session { get; set; }
+            public string time { get; set; }
+        }
+
+        public class Cat2course
+        {
+            public string crTitle { get; set; }
+            public string slot { get; set; }
+            public string date { get; set; }
+            public string day { get; set; }
+            public string session { get; set; }
+            public string time { get; set; }
+        }
+
+        public class Cat2
+        {
+            public Cat2course excourse { get; set; }
+        }
+
+        public class ExamSchedule
+        {
+            public string status { get; set; }
+            public Cat1 cat1 { get; set; }
+            public Cat2 cat2 { get; set; }
+            public object termend { get; set; }
+        }
+
+        public class Status
+        {
+            public string message { get; set; }
+            public int code { get; set; }
+        }
+
+        public class RootObject
+        {
+            public string reg_no { get; set; }
+            public string name { get; set; }
+            public string school { get; set; }
+            public string campus { get; set; }
+            public string semester { get; set; }
+            public List<Cours> courses { get; set; }
+            public AcademicHistory academic_history { get; set; }
+            public FacultyAdvisor faculty_advisor { get; set; }
+            public ExamSchedule exam_schedule { get; set; }
+            public Status status { get; set; }
+        }
+
+    }
+}

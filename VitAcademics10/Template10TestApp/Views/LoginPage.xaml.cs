@@ -30,6 +30,7 @@ namespace Template10TestApp.Views
     {
         private static string campus;
         private static bool login;
+        private static string refresh; 
 
         public LoginPage()
         {
@@ -41,13 +42,14 @@ namespace Template10TestApp.Views
 
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
-            var x = 5;
+            
             login = await DataManager.LoginAsync(campus, RegNo.Text, Password.Password);
             if (login)
             {
-                Shell.HamburgerMenu.IsFullScreen = false;
-                var nav = WindowWrapper.Current().NavigationServices.FirstOrDefault();
-                nav.Navigate(typeof(Views.MainPage));
+                //Shell.HamburgerMenu.IsFullScreen = false;
+                //var nav = WindowWrapper.Current().NavigationServices.FirstOrDefault();
+                //nav.Navigate(typeof(Views.MainPage));
+                MessageDialog.ShowDialog("Login Successful");
             }
             else
             {
@@ -64,6 +66,10 @@ namespace Template10TestApp.Views
 
         }
 
-       
+        private async void Refresh_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var refresh = await NetworkService.Refresh(campus, RegNo.Text, Password.Password);
+            
+        }
     }
 }
