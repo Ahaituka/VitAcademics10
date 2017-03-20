@@ -18,82 +18,85 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Image Source="ms-appx:///Assets/DarkGray.png" Stretch="UniformToFill" Grid.RowSpan="3" />
-        <TextBlock Text="VITAcademics10"
-                   Grid.RowSpan="3"
-                   Grid.Column="0"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center" 
-                   TextWrapping="NoWrap" RequestedTheme="Dark" FontSize="22" FontWeight="Bold"
-                   
-                   />
-        <Viewbox  Grid.Column="1" Grid.Row="0" Width="200" Height="200" >
-            <Image Source ="ms-appx:///Assets/AppLogo.png" Stretch="Fill" />
+        <Image
+            Grid.RowSpan="3"
+            Source="ms-appx:///Assets/DarkGray.png"
+            Stretch="UniformToFill" />
+        <TextBlock
+            Grid.RowSpan="3"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="22"
+            FontWeight="Bold"
+            RequestedTheme="Dark"
+            Text="VITAcademics10"
+            TextWrapping="NoWrap" />
+        <Viewbox
+            Grid.Row="0"
+            Grid.Column="1"
+            Width="200"
+            Height="200">
+            <Image Source="ms-appx:///Assets/AppLogo.png" Stretch="Fill" />
         </Viewbox>
-        <Viewbox Grid.Column="1" Margin="25" Grid.Row="1" MaxWidth="300" MaxHeight="300">
+        <Viewbox
+            Grid.Row="1"
+            Grid.Column="1"
+            MaxWidth="300"
+            MaxHeight="300"
+            Margin="25">
             <StackPanel>
                 <TextBox
-                Name="RegNo"
-                Margin="0,0,0,5"
-                controls:TextBoxMask.Mask=""
-                PlaceholderText="Registration Number"
-                />
+                    Name="RegNo"
+                    Margin="0,0,0,5"
+                    controls:TextBoxMask.Mask=""
+                    PlaceholderText="Registration Number"
+                    Text="{Binding Registration, Mode=TwoWay}" />
                 <PasswordBox
-                x:Name="Password"
-                Margin="0,5,0,0"
-                PlaceholderText="Password"/>
+                    x:Name="Password"
+                    Margin="0,5,0,0"
+                    PlaceholderText="Password" />
 
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <RadioButton
-                    x:Name="Radio_Vellore"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Width="120"
-                    Height="32"
-                    Checked="Radio_Vellore_Checked"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Vellore"
-                    GroupName="campus" />
+                        x:Name="Radio_Vellore"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Width="120"
+                        Height="32"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Checked="Radio_Vellore_Checked"
+                        Content="Vellore"
+                        GroupName="campus" />
                     <RadioButton
-                    x:Name="Radio_Chennai"
-                    Grid.Row="2"
-                    Checked="Radio_Vellore_Checked"
-                    Grid.Column="1"
-                    Width="120"
-                    Height="32"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="Chennai"
-                    GroupName="campus" />
+                        x:Name="Radio_Chennai"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Width="120"
+                        Height="32"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Checked="Radio_Vellore_Checked"
+                        Content="Chennai"
+                        GroupName="campus" />
                 </StackPanel>
                 <Button
-                x:Name="Login_Button"
-                Grid.Row="3"
-                Grid.ColumnSpan="2"
-                Width="100"
-                Height="32"
-                HorizontalAlignment="Stretch"
-                Background="#FF1E4D7C"
-                BorderBrush="#FF154EC9"
-                Click="Login_Click"
-                Content="Login"
-                Foreground="White" />
-                <Button
-                x:Name="Refresh_Button"
-                Grid.Row="3"
-                Grid.ColumnSpan="2"
-                Width="100"
-                Height="32"
-                HorizontalAlignment="Stretch"
-                Background="#FF1E4D7C"
-                BorderBrush="#FF154EC9"
-                Click="Refresh_Button_Click"
-                Content="Refresh"
-                Foreground="White" />
+                    x:Name="Login_Button"
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    Width="100"
+                    Height="32"
+                    HorizontalAlignment="Stretch"
+                    Background="#FF1E4D7C"
+                    BorderBrush="#FF154EC9"
+                    Click="Login_Click"
+                    Content="Login"
+                    Foreground="White" />
+
             </StackPanel>
         </Viewbox>
 
