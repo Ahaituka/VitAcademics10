@@ -30,5 +30,7 @@ namespace Template10TestApp.Views
             pageTitle.Text = "Hello " + DataManager.Refresh.name;
         }
 
+        public int AvgAttendance = 50;
+
     }
 }
