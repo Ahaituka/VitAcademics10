@@ -8,12 +8,7 @@ namespace AcademicsLibrary.DataModel
 {
     public class RefreshModel
     {
-        public class Timing
-        {
-            public int day { get; set; }
-            public string start_time { get; set; }
-            public string end_time { get; set; }
-        }
+        
 
         public class Detail
         {
@@ -25,34 +20,10 @@ namespace AcademicsLibrary.DataModel
             public string status { get; set; }
         }
 
-        public class Attendance
-        {
-            public int attendance_percentage { get; set; }
-            public int attended_classes { get; set; }
-            public List<Detail> details { get; set; }
-            public string registration_date { get; set; }
-            public int total_classes { get; set; }
-        }
 
-        public class Assessment
-        {
-            public string title { get; set; }
-            public int max_marks { get; set; }
-            public int weightage { get; set; }
-            public string conducted_on { get; set; }
-            public string status { get; set; }
-            public int scored_marks { get; set; }
-            public double scored_percentage { get; set; }
-        }
+        
 
-        public class Marks
-        {
-            public List<Assessment> assessments { get; set; }
-            public int max_marks { get; set; }
-            public int max_percentage { get; set; }
-            public int scored_marks { get; set; }
-            public double scored_percentage { get; set; }
-        }
+        
 
         public class Cours
         {
