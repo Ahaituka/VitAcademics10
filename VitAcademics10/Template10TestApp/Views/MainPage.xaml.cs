@@ -23,7 +23,7 @@ namespace Template10TestApp.Views
 {
     public sealed partial class MainPage : Page
     {
-        public List<RefreshModel.Cours> Course { get; set; }
+        public List<Course> Course { get; set; }
 
         public MainPage()
         {

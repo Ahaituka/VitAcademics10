@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace AcademicsLibrary.DataModel
 {
+    public class Detail
+    {
+        public int sl { get; set; }
+        public int class_units { get; set; }
+        public string date { get; set; }
+        public string reason { get; set; }
+        public string slot { get; set; }
+        public string status { get; set; }
+    }
+
     public class Attendance
     {
         public int attendance_percentage { get; set; }

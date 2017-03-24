@@ -11,10 +11,10 @@ namespace AcademicsLibrary.Managers
     {
 
         public static User user { get; private set; }
-        public static RefreshModel.RootObject Refresh { get; private set; }
+        public static RefreshModel Refresh { get; private set; }
         public static Response response { get; private set; }
         public static bool IsReady { get; private set; }
-        public static RefreshModel.RootObject Ref { get; private set; }
+        public static RefreshModel Ref { get; private set; }
 
         public static async Task<bool> LoginAsync(string campus ,string reg , string pass)
         {

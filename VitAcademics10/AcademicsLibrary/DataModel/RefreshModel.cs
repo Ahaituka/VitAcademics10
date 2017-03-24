@@ -9,43 +9,6 @@ namespace AcademicsLibrary.DataModel
     public class RefreshModel
     {
         
-
-        public class Detail
-        {
-            public int sl { get; set; }
-            public int class_units { get; set; }
-            public string date { get; set; }
-            public string reason { get; set; }
-            public string slot { get; set; }
-            public string status { get; set; }
-        }
-
-
-        
-
-        
-
-        public class Cours
-        {
-            public int class_number { get; set; }
-            public string course_code { get; set; }
-            public string course_mode { get; set; }
-            public string course_option { get; set; }
-            public string course_title { get; set; }
-            public string subject_type { get; set; }
-            public string faculty { get; set; }
-            public string ltpc { get; set; }
-            public string registration_status { get; set; }
-            public string slot { get; set; }
-            public string venue { get; set; }
-            public string bill_date { get; set; }
-            public string bill_number { get; set; }
-            public string project_title { get; set; }
-            public List<Timing> timings { get; set; }
-            public Attendance attendance { get; set; }
-            public Marks marks { get; set; }
-        }
-
         public class GradeSummary
         {
             public string __invalid_name__Agrades { get; set; }
@@ -148,19 +111,18 @@ namespace AcademicsLibrary.DataModel
             public int code { get; set; }
         }
 
-        public class RootObject
-        {
+       
             public string reg_no { get; set; }
             public string name { get; set; }
             public string school { get; set; }
             public string campus { get; set; }
             public string semester { get; set; }
-            public List<Cours> courses { get; set; }
+            public List<Course> courses { get; set; }
             public AcademicHistory academic_history { get; set; }
             public FacultyAdvisor faculty_advisor { get; set; }
             public ExamSchedule exam_schedule { get; set; }
             public Status status { get; set; }
-        }
+        
 
     }
 }

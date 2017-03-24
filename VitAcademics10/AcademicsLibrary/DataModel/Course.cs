@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AcademicsLibrary.DataModel
 {
-    class Course
+    public class Course
     {
         public int class_number { get; set; }
         public string course_code { get; set; }

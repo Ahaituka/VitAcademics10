@@ -27,6 +27,16 @@
                     <EntranceThemeTransition />
                 </TransitionCollection>
             </Grid.ChildrenTransitions>
+            <ListView ItemsSource="{x:Bind Course}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Course">
+                        <StackPanel>
+                            
+                            <TextBlock Text="{x:Bind course_title}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Hub Margin="10,10,10,10" Orientation="Vertical">
                 <Hub.Header>
                     <!--  Back button and page title  -->
@@ -133,13 +143,7 @@
                 <HubSection x:Uid="Section2Header" Header="Section 2">
 
                     <DataTemplate>
-                        <ListView ItemsSource="{Binding Course}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="data:Course">
-                                    <TextBlock Text="{Binding Course}" />
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                        
                     </DataTemplate>
 
 
