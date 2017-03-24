@@ -29,7 +29,7 @@ namespace Template10TestApp.Views
         {
             InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
-            pageTitle.Text = "Hello " + DataManager.Refresh.name;
+            //pageTitle.Text = "Hello " + DataManager.Refresh.name;
             Course = DataManager.Refresh.courses;
         }
     }

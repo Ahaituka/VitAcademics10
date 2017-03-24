@@ -27,6 +27,8 @@
                     <EntranceThemeTransition />
                 </TransitionCollection>
             </Grid.ChildrenTransitions>
+            
+            
             <StackPanel>
                 <TextBlock Name="pageTitle" Text="Hello World !" />
                 <TextBlock Text="Courses" />
@@ -41,6 +43,21 @@
                 </ListView.ItemTemplate>
             </ListView>
             </StackPanel>
+
+            <!--<Hub>
+                <HubSection Header="Course List">
+                    <DataTemplate x:DataType="data:RefreshModel">
+                        <ListView ItemsSource="x:Bind Course">
+                            <ListView.ItemTemplate>
+                                
+                                <DataTemplate x:DataType="data:Course" >
+                                    <TextBlock Text="{x:Bind course_title}" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </DataTemplate>
+                </HubSection>
+            </Hub>-->
         </Grid>
     </RelativePanel>
 </Page>
