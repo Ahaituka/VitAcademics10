@@ -15,6 +15,7 @@ namespace Template10TestApp.Views
     {
         public static Shell Instance { get; set; }
         public static HamburgerMenu HamburgerMenu => Instance.MyHamburgerMenu;
+        public static PageHeader PageHeader => Instance.MyHeader;
         Services.SettingsServices.SettingsService _settings;
 
         public Shell()
@@ -35,6 +36,10 @@ namespace Template10TestApp.Views
             HamburgerMenu.RefreshStyles(_settings.AppTheme, true);
             HamburgerMenu.IsFullScreen = _settings.IsFullScreen;
             HamburgerMenu.HamburgerButtonVisibility = _settings.ShowHamburgerButton ? Visibility.Visible : Visibility.Collapsed;
+
+
+            MyHeader.TabNavigation = TabNavigation;
+            MyHeader.Visibility = Visibility.Visible;
         }
     }
 }

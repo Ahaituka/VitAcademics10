@@ -11,11 +11,21 @@
         <ImageBrush Stretch="Fill" />
     </Page.Background>
     <Grid Background="White">
+        <Grid Name="LoadingGrid" Background="White" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed">
+            <StackPanel>
+                <ProgressRing IsActive="True" Margin="0,0,0,5">
+                </ProgressRing>
+                <TextBlock Text="Getting your content ready"></TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Name="RootGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        
 
         <Viewbox
             Grid.Row="0"
@@ -34,13 +44,13 @@
                 <TextBox
                     Name="RegNo"
                     Margin="0,0,0,5"
-                    controls:TextBoxMask.Mask=""
+                    
                     PlaceholderText="Registration Number"
-                    Text="{Binding Registration, Mode=TwoWay}" />
+                    Text="{Binding Registration, Mode=TwoWay}" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}" />
                 <PasswordBox
                     x:Name="Password"
                     Margin="0,5,0,0"
-                    PlaceholderText="Password" />
+                    PlaceholderText="Password" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}" />
 
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <RadioButton
@@ -60,7 +70,7 @@
                         Grid.Column="1"
                         Width="120"
                         Height="32"
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Checked="Radio_Vellore_Checked"
                         Content="Chennai"
@@ -83,6 +93,6 @@
         </Viewbox>
 
 
-
+        </Grid>
     </Grid>
 </Page>

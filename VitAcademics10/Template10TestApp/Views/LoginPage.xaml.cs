@@ -71,6 +71,8 @@ namespace Template10TestApp.Views
 
         private async void Refresh_Button_Click(object sender, RoutedEventArgs e)
         {
+            RootGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            LoadingGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
             var refresh = await DataManager.RefreshAsync(campus, Registration, Password.Password);
             if (login)
             {

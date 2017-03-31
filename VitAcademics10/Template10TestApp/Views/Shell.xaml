@@ -12,9 +12,15 @@
     xmlns:views="using:Template10TestApp.Views"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
-
+    <Grid>
+        <Controls:PageHeader x:Name="MyHeader">
+            <Controls:PageHeader.PrimaryCommands>
+                <AppBarButton Icon="People" Label="MyProfile" />
+                <AppBarButton Icon="Setting" Label="Settings" />
+                <!--<AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" /-->
+            </Controls:PageHeader.PrimaryCommands>
+        </Controls:PageHeader>
     <Controls:HamburgerMenu x:Name="MyHamburgerMenu">
-
         <Controls:HamburgerMenu.PrimaryButtons>
             <!--  mainpage button  -->
             <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:MainPage">
@@ -29,6 +35,21 @@
                         Text="Home" />
                 </StackPanel>
             </Controls:HamburgerButtonInfo>
+            <!-- User Profile Button -->
+
+            <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:Profile">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon
+                        Width="48"
+                        Height="48"
+                        Symbol="People" />
+                    <TextBlock
+                        Margin="12,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="Profile" />
+                </StackPanel>
+            </Controls:HamburgerButtonInfo>
+            
         </Controls:HamburgerMenu.PrimaryButtons>
 
         <Controls:HamburgerMenu.SecondaryButtons>
@@ -78,6 +99,8 @@
         </Controls:HamburgerMenu.SecondaryButtons>
 
     </Controls:HamburgerMenu>
+    </Grid>
+
 
 </Page>
 
