@@ -122,7 +122,7 @@ namespace Template10TestApp
                     
                          Shell.HamburgerMenu.IsFullScreen = true;
                         //    Shell.HamburgerMenu.IsFullScreen = true;
-                        NavigationService.Navigate(typeof(Views.Icheck));
+                        NavigationService.Navigate(typeof(Views.LoginPage));
                         //MessageDialog.ShowDialog("Sorry No INTERNET ");
                     
                 }
