@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using AcademicsLibrary.DataModel;
+using AcademicsLibrary.Managers;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,11 +25,15 @@ namespace Template10TestApp.Views
     /// </summary>
     public sealed partial class Profile : Page
     {
+        public RefreshModel prof;
         public Profile()
         {
             this.InitializeComponent();
-            var img = new BitmapImage(new Uri("http://vtop.vit.ac.in/student/view_photo_2.asp?rgno=15BCE0815"));
-            this.Ppic.Source = img;
+            //var img = new BitmapImage(new Uri("http://vtop.vit.ac.in/student/view_photo_2.asp?rgno=15BCE0815"));
+            //this.Ppic.Source = img;
+            prof = DataManager.Refresh;
+            RegNo.Text = prof.reg_no;
+            UserName.Text = prof.name;
         }
     }
 }

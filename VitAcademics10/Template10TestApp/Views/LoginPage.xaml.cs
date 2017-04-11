@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,7 +31,7 @@ namespace Template10TestApp.Views
     public sealed partial class LoginPage : Page
     {
         private static string campus;
-        private static bool login;
+        private static DataManager.StatusCode login;
         private static string refresh;
         private static string _regNo;
 
@@ -48,15 +48,25 @@ namespace Template10TestApp.Views
 
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
-            
+            RootGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            LoadingGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
             login = await DataManager.LoginAsync(campus, Registration, Password.Password);
-            if (login)
+            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            localSettings.Values["user"] = Registration;
+            localSettings.Values["pass"] = Password.Password;
+            localSettings.Values["campus"] = campus;
+
+            if (login == DataManager.StatusCode.Success)
             {
-                Refresh_Button_Click(sender, e);
+                Refresh();
+
             }
             else
             {
                 MessageDialog.ShowDialog(DataManager.user.status.message);
+                LoadingGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                RootGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
+                
 
             }
             //Frame.Navigate(typeof(MainPage));
@@ -69,12 +79,13 @@ namespace Template10TestApp.Views
 
         }
 
-        private async void Refresh_Button_Click(object sender, RoutedEventArgs e)
-        {
-            RootGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            LoadingGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
-            var refresh = await DataManager.RefreshAsync(campus, Registration, Password.Password);
-            if (login)
+        private async void Refresh()
+        {            
+            var refresh = await DataManager.RefreshDataAsync(campus, Registration, Password.Password);
+
+
+
+            if (login == DataManager.StatusCode.Success)
             {
                 Shell.HamburgerMenu.IsFullScreen = false;
                 var nav = WindowWrapper.Current().NavigationServices.FirstOrDefault();
@@ -84,7 +95,8 @@ namespace Template10TestApp.Views
             else
             {
                 MessageDialog.ShowDialog(DataManager.user.status.message);
-
+                LoadingGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+                RootGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
 
         }

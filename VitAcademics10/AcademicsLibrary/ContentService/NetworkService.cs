@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AcademicsLibrary.DataModel;
 using Newtonsoft.Json;
+using Windows.Networking.Connectivity;
 
 namespace AcademicsLibrary.NetworkService
 {
@@ -76,6 +77,13 @@ namespace AcademicsLibrary.NetworkService
                 var x = new RefreshModel();
                 return x ;
             }
+        }
+
+        public static bool IsInternet()
+        {
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+            return internet;
         }
 
     }
