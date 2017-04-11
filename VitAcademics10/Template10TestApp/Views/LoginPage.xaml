@@ -11,86 +11,90 @@
         <ImageBrush Stretch="Fill" />
     </Page.Background>
     <Grid Background="White">
-        <Grid Name="LoadingGrid" Background="White" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed">
+        <Grid
+            Name="LoadingGrid"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="White"
+            Visibility="Collapsed">
             <StackPanel>
-                <ProgressRing IsActive="True" Margin="0,0,0,5">
-                </ProgressRing>
-                <TextBlock Text="Getting your content ready"></TextBlock>
+                <ProgressRing Margin="0,0,0,5" IsActive="True" />
+                <TextBlock Text="Getting your content ready" />
             </StackPanel>
         </Grid>
 
         <Grid Name="RootGrid">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <Viewbox
-            Grid.Row="0"
-            Margin="0,100,0,0"
-            Width="200"
-            Height="200">
-            <Image Source="ms-appx:///Assets/AppLogo.png" Stretch="Fill" />
-        </Viewbox>
-        <Viewbox
-            Grid.Row="1"
-            
-            MaxWidth="300"
-            MaxHeight="300"
-            Margin="25">
-            <StackPanel>
-                <TextBox
-                    Name="RegNo"
-                    Margin="0,0,0,5"
-                    
-                    PlaceholderText="Registration Number"
-                    Text="{Binding Registration, Mode=TwoWay}" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}" />
-                <PasswordBox
-                    x:Name="Password"
-                    Margin="0,5,0,0"
-                    PlaceholderText="Password" Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}" />
 
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <RadioButton
-                        x:Name="Radio_Vellore"
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        Width="120"
+            <Viewbox
+                Grid.Row="0"
+                Width="200"
+                Height="200"
+                Margin="0,100,0,0">
+                <Image Source="ms-appx:///Assets/AppLogo.png" Stretch="Fill" />
+            </Viewbox>
+            <Viewbox
+                Grid.Row="1"
+                MaxWidth="300"
+                MaxHeight="300"
+                Margin="25">
+                <StackPanel>
+                    <TextBox
+                        Name="RegNo"
+                        Margin="0,0,0,5"
+                        Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}"
+                        PlaceholderText="Registration Number"
+                        Text="{Binding Registration, Mode=TwoWay}" />
+                    <PasswordBox
+                        x:Name="Password"
+                        Margin="0,5,0,0"
+                        Foreground="{ThemeResource TextBoxDisabledForegroundThemeBrush}"
+                        PlaceholderText="Password" />
+
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <RadioButton
+                            x:Name="Radio_Vellore"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Width="120"
+                            Height="32"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Checked="Radio_Vellore_Checked"
+                            Content="Vellore"
+                            GroupName="campus" />
+                        <RadioButton
+                            x:Name="Radio_Chennai"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Width="120"
+                            Height="32"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Checked="Radio_Vellore_Checked"
+                            Content="Chennai"
+                            GroupName="campus" />
+                    </StackPanel>
+                    <Button
+                        x:Name="Login_Button"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Width="100"
                         Height="32"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Checked="Radio_Vellore_Checked"
-                        Content="Vellore"
-                        GroupName="campus" />
-                    <RadioButton
-                        x:Name="Radio_Chennai"
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Width="120"
-                        Height="32"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        Checked="Radio_Vellore_Checked"
-                        Content="Chennai"
-                        GroupName="campus" />
+                        HorizontalAlignment="Stretch"
+                        Background="#FF1E4D7C"
+                        BorderBrush="#FF154EC9"
+                        Click="Login_Click"
+                        Content="Login"
+                        Foreground="White" />
+
                 </StackPanel>
-                <Button
-                    x:Name="Login_Button"
-                    Grid.Row="3"
-                    Grid.ColumnSpan="2"
-                    Width="100"
-                    Height="32"
-                    HorizontalAlignment="Stretch"
-                    Background="#FF1E4D7C"
-                    BorderBrush="#FF154EC9"
-                    Click="Login_Click"
-                    Content="Login"
-                    Foreground="White" />
-
-            </StackPanel>
-        </Viewbox>
+            </Viewbox>
 
 
         </Grid>
