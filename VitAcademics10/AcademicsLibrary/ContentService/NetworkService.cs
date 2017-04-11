@@ -79,7 +79,7 @@ namespace AcademicsLibrary.NetworkService
             }
         }
 
-        public static bool IsInternet()
+        public static  async Task<bool> IsInternet()
         {
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
             bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;

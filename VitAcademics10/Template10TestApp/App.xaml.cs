@@ -77,22 +77,23 @@ namespace Template10TestApp
                 }
                 catch
                 {
+                    Shell.HamburgerMenu.IsFullScreen = true;
                     NavigationService.Navigate(typeof(Views.LoginPage));
                     return;
 
-                }
-               
+                }              
 
-                Debug.WriteLine("Data Status: {0} ", DataManager.IsReady);
-
-                var isInternet =  NetworkService.IsInternet();
+             //   Debug.WriteLine("Data Status: {0} ", DataManager.IsReady)
+                 var isInternet =  await  NetworkService.IsInternet();
 
 
                 if (isInternet)
                 {
                     try
                     {
-                      status = await DataManager.LoginAsync(campus, user, pass);
+                        Busy.SetBusy(true, "Refreshing ");                       
+                        status = await DataManager.LoginAsync(campus, user, pass);                        
+                        Busy.SetBusy(false);
                         //   await DataManager.RefreshDataAsync(campus, user, pass);
 
                     }
@@ -121,8 +122,8 @@ namespace Template10TestApp
                     
                          Shell.HamburgerMenu.IsFullScreen = true;
                         //    Shell.HamburgerMenu.IsFullScreen = true;
-                        //NavigationService.Navigate(typeof(Views.Icheck));
-                        MessageDialog.ShowDialog("Sorry No INTERNET ");
+                        NavigationService.Navigate(typeof(Views.Icheck));
+                        //MessageDialog.ShowDialog("Sorry No INTERNET ");
                     
                 }
 
