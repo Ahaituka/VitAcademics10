@@ -109,7 +109,12 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="ContentService\NetworkService.cs" />
+    <Compile Include="DataModel\Attendance.cs" />
+    <Compile Include="DataModel\Course.cs" />
+    <Compile Include="DataModel\Marks.cs" />
+    <Compile Include="DataModel\RefreshModel.cs" />
     <Compile Include="DataModel\Response.cs" />
+    <Compile Include="DataModel\Timing.cs" />
     <Compile Include="DataModel\User.cs" />
     <Compile Include="Helpers\MessageDialog.cs" />
     <Compile Include="Managers\DataManager.cs" />

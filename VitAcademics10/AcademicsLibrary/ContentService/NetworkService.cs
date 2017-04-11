@@ -51,7 +51,7 @@ namespace AcademicsLibrary.NetworkService
                 return error;
             }
         }
-        public static async Task<string> Refresh(string campus,string reg,string pass)
+        public static async Task<RefreshModel> Refresh(string campus,string reg,string pass)
         {
             string httpResponseBody = "";
             var user = new User(campus,reg,pass);  
@@ -66,13 +66,15 @@ namespace AcademicsLibrary.NetworkService
                 string uriString = BASE_URI_STRING + String.Format(REFRESH_STRING_FORMAT, campus);
                 httpResponse = await httpClient.PostAsync(new Uri(uriString), postContent);
                 httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                return httpResponseBody;
+                RefreshModel _refresh = JsonConvert.DeserializeObject<RefreshModel>(httpResponseBody);
+                return _refresh;
             }
 
             catch (Exception e)
             {
                 httpResponseBody = "Error: " + e.HResult.ToString("X") + " Message: " + e.Message;
-                return httpResponseBody;
+                var x = new RefreshModel();
+                return x ;
             }
         }
 

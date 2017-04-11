@@ -11,8 +11,10 @@ namespace AcademicsLibrary.Managers
     {
 
         public static User user { get; private set; }
+        public static RefreshModel Refresh { get; private set; }
         public static Response response { get; private set; }
         public static bool IsReady { get; private set; }
+        public static RefreshModel Ref { get; private set; }
 
         public static async Task<bool> LoginAsync(string campus ,string reg , string pass)
         {
@@ -30,6 +32,20 @@ namespace AcademicsLibrary.Managers
             }   
         }
 
+        public static async Task<bool> RefreshAsync(string campus, string reg, string pass)
+        {
+            Refresh = await NetworkService.NetworkService.Refresh(campus, reg, pass);
+            if (Refresh.status.code == 0)
+            {
+                IsReady = true;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
 
     }
 }
