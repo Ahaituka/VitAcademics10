@@ -24,6 +24,12 @@ namespace Template10TestApp
     [Bindable]
     sealed partial class App : BootStrapper
     {
+
+        public string user;
+        public string pass;
+        public string campus;
+        public DataManager.StatusCode status;
+            
         public App()
         {
             InitializeComponent();
@@ -62,24 +68,49 @@ namespace Template10TestApp
             if (roamingProperties.ContainsKey("HasBeenHereBefore"))
             {
                 // TODO: add your long-running task here
-                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                string user = localSettings.Values["user"].ToString();
-                string pass = localSettings.Values["pass"].ToString();
-                string campus = localSettings.Values["campus"].ToString();
                 try
                 {
-                    DataManager.StatusCode status = await DataManager.LoginAsync(campus, user, pass);
-                 //   await DataManager.RefreshDataAsync(campus, user, pass);
-                    if (status != DataManager.StatusCode.Success)
-                        await DataManager.LoadCacheAsync();
-                   
-            
+                    var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                    user = localSettings.Values["user"].ToString();
+                    pass = localSettings.Values["pass"].ToString();
+                    campus = localSettings.Values["campus"].ToString();
                 }
-                catch { }
+                catch
+                {
+                    NavigationService.Navigate(typeof(Views.LoginPage));
+                    return;
 
-                Debug.WriteLine("Data Status: ", DataManager.IsReady);
+                }
+               
 
-                var x = NetworkService.IsInternet();
+                Debug.WriteLine("Data Status: {0} ", DataManager.IsReady);
+
+                var isInternet =  NetworkService.IsInternet();
+
+
+                if (isInternet)
+                {
+                    try
+                    {
+                      status = await DataManager.LoginAsync(campus, user, pass);
+                        //   await DataManager.RefreshDataAsync(campus, user, pass);
+
+                    }
+                    catch { }
+                }
+                else
+                {
+                    try
+                    {
+                       // if (status != DataManager.StatusCode.Success)
+                            await DataManager.LoadCacheAsync();
+                    }
+                    catch
+                    {
+
+
+                    }
+                }
 
                 if (DataManager.IsReady)
                 {
@@ -87,29 +118,15 @@ namespace Template10TestApp
                 }
                 else if (!DataManager.IsReady)
                 {
-                    if (x)
-                    {
-
-                        //Shell.HamburgerMenu.IsFullScreen = true;
-                        //await NavigationService.NavigateAsync(typeof(Views.LoginPage));
-                        await DataManager.RefreshDataAsync(campus, user, pass);
-                        if (DataManager.IsReady)
-                        {
-                            NavigationService.Navigate(typeof(Views.MainPage));
-                        }
-
-                    }
-
-                    if (!x)
-                    {
-                        Shell.HamburgerMenu.IsFullScreen = true;
+                    
+                         Shell.HamburgerMenu.IsFullScreen = true;
                         //    Shell.HamburgerMenu.IsFullScreen = true;
                         //NavigationService.Navigate(typeof(Views.Icheck));
                         MessageDialog.ShowDialog("Sorry No INTERNET ");
-                    }
+                    
                 }
 
-                 //await Task.CompletedTask;               
+               await Task.CompletedTask;               
                 // The normal case
                 //await NavigationService.NavigateAsync(typeof(Views.MainPage));
             }

@@ -81,7 +81,7 @@ namespace Template10TestApp.Views
 
         private async void Refresh()
         {            
-            var refresh = await DataManager.RefreshDataAsync(campus, Registration, Password.Password);
+            var refresh = await DataManager.LoginAsync(campus, Registration, Password.Password);
 
 
 

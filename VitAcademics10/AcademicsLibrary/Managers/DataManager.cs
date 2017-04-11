@@ -61,11 +61,22 @@ namespace AcademicsLibrary.Managers
         public static async Task<StatusCode> LoginAsync(string campus ,string reg , string pass)
         {
              user = await NetworkService.NetworkService.Login(campus ,reg,pass);
+
             if (user.status.code==0)
-            {          
-              
-                IsReady = true;
-                return StatusCode.Success;
+            {
+                Refresh = await NetworkService.NetworkService.Refresh(campus, reg, pass);
+                if (Refresh.status.code == 0)
+                {
+                    IsReady = true;
+                    await TrySaveDataAsync();
+
+                    return StatusCode.Success;
+
+                }
+                else
+                {
+                    return StatusCode.UnknownError;
+                }
                 //  await TrySaveDataAsync(response.Content);
             }
             else
