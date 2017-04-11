@@ -23,10 +23,17 @@ namespace Template10TestApp.Views
     /// </summary>
     public sealed partial class CourseDetails : Page
     {
-        public List<Course> Course { get; set; }
+        public Course Course { get; set; }
         public CourseDetails()
         {
             this.InitializeComponent();
+            //Course_Name.Text = Course.course_title;
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var k = e.Content;
+
         }
     }
 }
