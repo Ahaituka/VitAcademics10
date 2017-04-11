@@ -1,4 +1,4 @@
-﻿using AcademicsLibrary.DataModel;
+using AcademicsLibrary.DataModel;
 using System;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -159,3 +159,4 @@ namespace AcademicsLibrary.Managers
 
     }
 }
+
