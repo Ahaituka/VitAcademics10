@@ -12,7 +12,7 @@ namespace Template10TestApp.Views
             InitializeComponent();
             Window.Current.SizeChanged += (s, e) => Resize(splashScreen);
             Resize(splashScreen);
-            Opacity = 100;
+            Opacity = 0;
         }
 
         private void Resize(SplashScreen splashScreen)
