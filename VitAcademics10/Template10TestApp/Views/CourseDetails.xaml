@@ -21,14 +21,10 @@
             <ListView ItemsSource="{x:Bind attendanceDetails}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="data:Detail">
-                        <Grid MinWidth="320" HorizontalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="{x:Bind date}" Grid.Column="0" HorizontalAlignment="Center"/>
-                            <TextBlock Text="{x:Bind status}" Grid.Column="1" HorizontalAlignment="Center"/>
-                        </Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{x:Bind date}"/>
+                            <TextBlock Text="{x:Bind status}" />
+                        </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 
