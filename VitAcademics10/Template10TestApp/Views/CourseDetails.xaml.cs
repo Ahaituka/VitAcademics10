@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using AcademicsLibrary.Managers;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,15 +25,16 @@ namespace Template10TestApp.Views
     public sealed partial class CourseDetails : Page
     {
         public Course Course { get; set; }
+        public Course recieved { get; set; }
         public CourseDetails()
         {
             this.InitializeComponent();
             //Course_Name.Text = Course.course_title;
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var k = e.Content;
+            recieved = DataManager.navData;
 
         }
     }

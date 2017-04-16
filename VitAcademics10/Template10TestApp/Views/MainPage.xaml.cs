@@ -24,6 +24,7 @@ namespace Template10TestApp.Views
     public sealed partial class MainPage : Page
     {
         public List<Course> Course { get; set; }
+        public Course selected { get; set; }
         public MainPage()
         {
             InitializeComponent();
@@ -34,7 +35,10 @@ namespace Template10TestApp.Views
 
         private void Course_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            //detailPresenter.Content = CourseDetails;
+            selected = (Course)e.ClickedItem;
+            DataManager.navData = selected;
+            this.Frame.Navigate(typeof(CourseDetails));
         }
     }
 }

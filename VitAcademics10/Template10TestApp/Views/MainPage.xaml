@@ -31,22 +31,20 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Pivot Grid.Row="1">
-                <PivotItem Header="Courses">
-                    <ContentPresenter>
-                        <ListView ItemClick="Course_ItemClick" ItemsSource="{x:Bind Course}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="data:Course">
-                                    <StackPanel>
-                                        <TextBlock Text="{x:Bind course_title}" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </ContentPresenter>
-                </PivotItem>
-                <PivotItem Header="Second Pivot Element" />
-            </Pivot>
+            <ContentPresenter Name="detailPresenter" Visibility="Collapsed">
+            </ContentPresenter>
+
+            <ContentPresenter Name="listPresenter">
+                <ListView ItemClick="Course_ItemClick" ItemsSource="{x:Bind Course}" IsItemClickEnabled="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="data:Course">
+                            <StackPanel>
+                                <TextBlock Text="{x:Bind course_title}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ContentPresenter>
 
 
         </Grid>
