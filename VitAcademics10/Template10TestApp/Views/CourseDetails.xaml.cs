@@ -26,6 +26,7 @@ namespace Template10TestApp.Views
     {
         public Course Course { get; set; }
         public Course recieved { get; set; }
+        public List<Detail> attendanceDetails {get; set;}
         public CourseDetails()
         {
             this.InitializeComponent();
@@ -35,6 +36,7 @@ namespace Template10TestApp.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             recieved = DataManager.navData;
+            attendanceDetails = recieved.attendance.details;
 
         }
     }

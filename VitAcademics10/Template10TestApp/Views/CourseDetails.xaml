@@ -17,15 +17,22 @@
                 <Image x:Name="Ppic" Source="ms-appx:///Assets/DarkGray.png" />
             </Viewbox>
             <TextBlock Text="{x:Bind recieved.course_title}" HorizontalAlignment="Center"></TextBlock>
-            <!--<ListView ItemsSource="{x:Bind recieved}">
+            
+            <ListView ItemsSource="{x:Bind attendanceDetails}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="data:Detail">
-                        <StackPanel Orientation="Horizontal">
-                        </StackPanel>
+                        <Grid MinWidth="320" HorizontalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{x:Bind date}" Grid.Column="0" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind status}" Grid.Column="1" HorizontalAlignment="Center"/>
+                        </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 
-            </ListView>-->
+            </ListView>
 
         </StackPanel>
     </Grid>
