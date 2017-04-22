@@ -8,19 +8,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="DarkCyan">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-            <Viewbox
-            Margin="0,0,0,0"
-            Width="200"
-            Grid.Row="0"
-            Height="200">
-                <Image x:Name="Ppic" Source="ms-appx:///Assets/DarkGray.png" />
-            </Viewbox>
+        <Grid>
+            <StackPanel>
+                <Viewbox
+                Margin="0,0,0,0"
+                Width="200"
+                Grid.Row="0"
+                Height="200">
+                    <Image x:Name="Ppic" Source="ms-appx:///Assets/DarkGray.png" />
+                </Viewbox>
             <TextBlock Text="{x:Bind recieved.course_title}" HorizontalAlignment="Center"></TextBlock>
+            </StackPanel>
+        </Grid>
 
 
         <ListView ItemsSource="{x:Bind attendanceDetails}" ScrollViewer.VerticalScrollMode="Enabled"
