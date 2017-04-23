@@ -68,6 +68,7 @@ namespace Template10TestApp
             if (roamingProperties.ContainsKey("HasBeenHereBefore"))
             {
                 // TODO: add your long-running task here
+                
                 try
                 {
                     var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
@@ -81,10 +82,12 @@ namespace Template10TestApp
                     NavigationService.Navigate(typeof(Views.LoginPage));
                     return;
 
-                }              
+                }
 
-             //   Debug.WriteLine("Data Status: {0} ", DataManager.IsReady)
-                 var isInternet =  await  NetworkService.IsInternet();
+                await DataManager.LoadCacheAsync();
+
+                //   Debug.WriteLine("Data Status: {0} ", DataManager.IsReady)
+                var isInternet =  await  NetworkService.IsInternet();
 
 
                 if (isInternet)

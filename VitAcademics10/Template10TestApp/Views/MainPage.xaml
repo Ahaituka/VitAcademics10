@@ -11,8 +11,10 @@
     xmlns:data="using:AcademicsLibrary.DataModel"
     xmlns:local="using:Template10TestApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls.Primitives"
     xmlns:telerikDataViz="using:Telerik.UI.Xaml.Controls.DataVisualization"
     xmlns:vm="using:Template10TestApp.ViewModels"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
     xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
     mc:Ignorable="d">
     <Page.DataContext>
@@ -20,7 +22,69 @@
     </Page.DataContext>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid
+        <Pivot Background="DarkCyan">
+            <PivotItem Background="DarkCyan" Header="Home">
+
+                <ScrollViewer>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid x:Name="MyHead"
+              MinHeight="250"
+              Background="DarkCyan">
+                            <StackPanel VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Margin="20,0">
+                                <TextBlock Text="Hello VITian"
+                       TextAlignment="Center"
+                       FontWeight="Bold"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Foreground="White"
+                       Margin="0,5" />
+                                <TextBlock Name="greetbox"
+                       Style="{ThemeResource SubtitleTextBlockStyle}"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
+                        <GridView Grid.Row="1"
+                                  animations:ReorderGridAnimation.Duration="300"
+                                  HorizontalContentAlignment="Center"
+                                  HorizontalAlignment="Center"
+                                  VerticalContentAlignment="Center">
+
+                            <Grid>
+                                <telerik:RadHubTile 
+                                            Name="courseTile" Title="Courses" Tapped="courseTile_Tapped">
+
+                                </telerik:RadHubTile>
+                            </Grid>
+                            <Grid>
+                                <telerik:RadHubTile Title="My Profile">
+
+                                </telerik:RadHubTile >
+                            </Grid>
+                            <Grid>
+                                <telerik:RadHubTile >
+
+                                </telerik:RadHubTile>
+                            </Grid>
+                            <Grid>
+                                <telerik:RadHubTile>
+
+                                </telerik:RadHubTile>
+                            </Grid>
+                        </GridView>
+                    </Grid>
+                </ScrollViewer>
+            </PivotItem>
+            <PivotItem Header="Today">
+                <Grid>
+                    <Grid
             Name="LoadingGrid"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
@@ -28,74 +92,77 @@
             Visibility="Collapsed"
             RelativePanel.AlignVerticalCenterWithPanel="True"
             RelativePanel.AlignHorizontalCenterWithPanel="True">
-            <StackPanel>
-                <ProgressRing Margin="0,0,0,5" IsActive="True" />
-                <TextBlock Text="Refreshing Your Contect" />
-            </StackPanel>
-        </Grid>
-        <ListView Name="RootGrid" ItemClick="Course_ItemClick" ItemsSource="{x:Bind Course}" IsItemClickEnabled="True"
+                        <StackPanel>
+                            <ProgressRing Margin="0,0,0,5" IsActive="True" />
+                            <TextBlock Text="Refreshing Your Contect" />
+                        </StackPanel>
+                    </Grid>
+                    <ListView Name="RootGrid" ItemClick="Course_ItemClick" ItemsSource="{x:Bind Course}" IsItemClickEnabled="True"
                   Background="DarkCyan">
-            <Interactivity:Interaction.Behaviors>
-                <behaviors:FadeHeaderBehavior />
-            </Interactivity:Interaction.Behaviors>
-            <ListView.Header>
-                <Grid x:Name="MyHeaderGrid"
+                        <Interactivity:Interaction.Behaviors>
+                            <behaviors:FadeHeaderBehavior />
+                        </Interactivity:Interaction.Behaviors>
+                        <ListView.Header>
+                            <Grid x:Name="MyHeaderGrid"
               MinHeight="250"
               Background="DarkCyan">
-                    <StackPanel VerticalAlignment="Center"
+                                <StackPanel VerticalAlignment="Center"
                       HorizontalAlignment="Center"
                       Margin="20,0">
-                        <TextBlock Text="Hello VITian"
+                                    <TextBlock Text="What's Up Today ?"
                        TextAlignment="Center"
                        FontWeight="Bold"
                        Style="{ThemeResource TitleTextBlockStyle}"
                        Foreground="White"
                        Margin="0,5" />
-                        <TextBlock Name="grettbox"
+                                    <TextBlock Name="grettbox"
                        Style="{ThemeResource SubtitleTextBlockStyle}"
                        Foreground="White"
                        VerticalAlignment="Center"
                        TextAlignment="Center" />
-                    </StackPanel>
-                </Grid>
-            </ListView.Header>
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="data:Course">
-                    <Grid MinHeight="100">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Image x:Name="ToolkitLogo"
+                                </StackPanel>
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="data:Course">
+                                <Grid MinHeight="100">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image x:Name="ToolkitLogo"
                    Source="ms-appx:///Assets/ToolkitLogo.png"
                    Height="50"
                    Width="50"
                    Grid.Column="0"
                    Margin="10" />
-                        <TextBlock Text="{x:Bind course_title}"
+                                    <TextBlock Text="{x:Bind course_title}"
                        Grid.Column="1"
                        TextTrimming="CharacterEllipsis"
                        VerticalAlignment="Center"
                        Margin="10"/>
-                        
-                        <TextBlock Text="{x:Bind subject_type}"
+
+                                    <TextBlock Text="{x:Bind subject_type}"
                        Grid.Column="2"
                        TextTrimming="CharacterEllipsis"
                        VerticalAlignment="Center" />
-                        
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment"
+
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment"
                   Value="Stretch" />
-                    <Setter Property="Padding"
+                                <Setter Property="Padding"
                   Value="10" />
-                </Style>
-            </ListView.ItemContainerStyle>
-        </ListView>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+            </PivotItem>
+        </Pivot>
     </Grid>
 
 

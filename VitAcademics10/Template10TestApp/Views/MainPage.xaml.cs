@@ -34,7 +34,7 @@ namespace Template10TestApp.Views
             //pageTitle.Text = "Hello " + DataManager.Refresh.name;
             Details = DataManager.user;
             Course = DataManager.Refresh.courses;
-            grettbox.Text = DataManager.Refresh.name.ToString();
+            greetbox.Text = DataManager.Refresh.name.ToString();
         }
 
         private void Course_ItemClick(object sender, ItemClickEventArgs e)
@@ -67,6 +67,11 @@ namespace Template10TestApp.Views
                 LoadingGrid.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
                 RootGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
             }
+        }
+
+        private void courseTile_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Courses));
         }
     }
 }

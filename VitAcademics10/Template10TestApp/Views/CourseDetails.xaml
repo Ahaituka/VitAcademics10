@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:data="using:AcademicsLibrary.DataModel"
     xmlns:local="using:Template10TestApp.Views"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -15,14 +16,38 @@
         </Grid.RowDefinitions>
         <Grid>
             <StackPanel>
+                
+                
                 <Viewbox
                 Margin="0,0,0,0"
                 Width="200"
                 Grid.Row="0"
                 Height="200">
-                    <Image x:Name="Ppic" Source="ms-appx:///Assets/DarkGray.png" />
+
+                    <controls:RadialGauge
+                          x:Name="RadialGauge"
+                          Value="{x:Bind recieved.attendance.attendance_percentage }"
+                          Minimum="0"
+                          Maximum="100"
+                          StepSize="1"
+                          IsInteractive="False"
+                          TickSpacing="20"
+                          ScaleWidth="26"
+                          MinAngle="210"
+                          MaxAngle="150"
+                          Unit="Units"
+                          TickBrush="Gainsboro"
+                          ScaleTickBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                          UnitBrush="Black"
+                          ValueBrush="Black" 
+                          NeedleWidth="5" 
+                          TickLength="18">
+
+                    </controls:RadialGauge>
                 </Viewbox>
-            <TextBlock Text="{x:Bind recieved.course_title}" HorizontalAlignment="Center"></TextBlock>
+                
+
+                <TextBlock Text="{x:Bind recieved.course_title}" HorizontalAlignment="Center"></TextBlock>
             </StackPanel>
         </Grid>
 
