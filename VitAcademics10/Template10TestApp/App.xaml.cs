@@ -62,8 +62,7 @@ namespace Template10TestApp
 
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-
-
+            
             IPropertySet roamingProperties = ApplicationData.Current.RoamingSettings.Values;
             if (roamingProperties.ContainsKey("HasBeenHereBefore"))
             {
@@ -125,12 +124,12 @@ namespace Template10TestApp
                     
                          Shell.HamburgerMenu.IsFullScreen = true;
                         //    Shell.HamburgerMenu.IsFullScreen = true;
-                        NavigationService.Navigate(typeof(Views.Icheck));
+                        NavigationService.Navigate(typeof(Views.LoginPage));
                         //MessageDialog.ShowDialog("Sorry No INTERNET ");
                     
                 }
 
-               await Task.CompletedTask;               
+           //    await Task.CompletedTask;               
                 // The normal case
                 //await NavigationService.NavigateAsync(typeof(Views.MainPage));
             }

@@ -9,17 +9,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
 
-    <Grid Background="White" x:Name="rootCanvas">
+    <Grid Background="{StaticResource ExtendedSplashBackground}">
 
         <!--<Canvas x:Name="rootCanvas"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
             <Canvas.Background>
-                <ImageBrush ImageSource="ms-appx:///Assets/AppLogo.png" Stretch="Uniform" />
+                <ImageBrush ImageSource="ms-appx:///Assets/SplashScreen.png" Stretch="Uniform" />
             </Canvas.Background>
             <Viewbox x:Name="splashImage">
-                <Image Source="ms-appx:///Assets/AppLogo.png" ImageOpened="Image_Loaded"
-                       />
+
+                <Image Source="ms-appx:///Assets/SplashScreen.png" ImageOpened="Image_Loaded" />
+
             </Viewbox>
         </Canvas>-->
         <Image x:Name="splashImage" Source="ms-appx:///Assets/AppLogo.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
