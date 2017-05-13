@@ -9,13 +9,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="DarkCyan">
+    <Grid Background="LightGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid>
-            <StackPanel>
+            <StackPanel Background="DarkCyan">
                 
                 
                 <Viewbox
@@ -32,7 +32,7 @@
                           StepSize="1"
                           IsInteractive="False"
                           TickSpacing="20"
-                          ScaleWidth="26"
+                          ScaleWidth="35"
                           MinAngle="210"
                           MaxAngle="150"
                           Unit="Units"
@@ -41,7 +41,7 @@
                           UnitBrush="Black"
                           ValueBrush="Black" 
                           NeedleWidth="5" 
-                          TickLength="18">
+                          TickLength="0">
 
                     </controls:RadialGauge>
                 </Viewbox>
@@ -63,7 +63,7 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="data:Detail">
-                    <Grid>
+                    <Grid Background="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>

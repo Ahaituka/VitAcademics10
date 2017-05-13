@@ -19,6 +19,7 @@ using Template10.Services.NavigationService;
 using Template10.Common;
 using AcademicsLibrary.Helpers;
 using Windows.Storage;
+using Windows.UI.ViewManagement;
 
 namespace Template10TestApp.Views
 {
@@ -27,6 +28,7 @@ namespace Template10TestApp.Views
         public User Details { get; set; }
         public List<Course> Course { get; set; }
         public Course selected { get; set; }
+
         public MainPage()
         {
             InitializeComponent();
@@ -35,7 +37,14 @@ namespace Template10TestApp.Views
             Details = DataManager.user;
             Course = DataManager.Refresh.courses;
             greetbox.Text = DataManager.Refresh.name.ToString();
+            if (ApplicationView.GetForCurrentView().IsViewModeSupported(ApplicationViewMode.CompactOverlay))
+            {
+                overlay.Visibility = Visibility.Visible;
+            }
+
         }
+
+
 
         private void Course_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -72,6 +81,17 @@ namespace Template10TestApp.Views
         private void courseTile_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(Courses));
+        }
+
+        private async void overlay_Click(object sender, RoutedEventArgs e)
+        {
+            bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.CompactOverlay);
+
+        }
+
+        private async void NormalMode_Click(object sender, RoutedEventArgs e)
+        {
+            bool modeSwitched = await ApplicationView.GetForCurrentView().TryEnterViewModeAsync(ApplicationViewMode.Default);
         }
     }
 }

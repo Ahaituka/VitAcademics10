@@ -12,7 +12,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListView Name="RootGrid" ItemClick="Course_ItemClick" ItemsSource="{x:Bind Course}" IsItemClickEnabled="True"
-                  Background="DarkCyan">
+                  Background="LightGray">
             <Interactivity:Interaction.Behaviors>
                 <behaviors:FadeHeaderBehavior />
             </Interactivity:Interaction.Behaviors>
@@ -69,6 +69,10 @@
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment"
                   Value="Stretch" />
+                    <Setter Property="Background" Value="White" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="Margin"
+                                        Value="10" />
                     <Setter Property="Padding"
                   Value="10" />
                 </Style>

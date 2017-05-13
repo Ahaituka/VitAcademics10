@@ -9,32 +9,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
 
-    <Grid Background="White">
+    <Grid Background="White" x:Name="rootCanvas">
 
-        <Canvas x:Name="rootCanvas"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch">
+        <!--<Canvas x:Name="rootCanvas"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
             <Canvas.Background>
                 <ImageBrush ImageSource="ms-appx:///Assets/AppLogo.png" Stretch="Uniform" />
             </Canvas.Background>
             <Viewbox x:Name="splashImage">
-                <Image Source="ms-appx:///Assets/" ImageOpened="Image_Loaded" />
+                <Image Source="ms-appx:///Assets/AppLogo.png" ImageOpened="Image_Loaded"
+                       />
             </Viewbox>
-        </Canvas>
-
-        <ProgressRing x:Name="progressRing"
+        </Canvas>-->
+        <Image x:Name="splashImage" Source="ms-appx:///Assets/AppLogo.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <StackPanel>
+            <ProgressRing x:Name="progressRing"
                       Width="50"
                       Height="50"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
                       Foreground="{StaticResource ExtendedSplashForeground}"
                       IsActive="True"
+                      
                       RenderTransformOrigin="0.5,0.5">
-            <ProgressRing.RenderTransform>
-                <CompositeTransform x:Name="ProgressTransform" TranslateY="120" />
-            </ProgressRing.RenderTransform>
-        </ProgressRing>
-
+                <ProgressRing.RenderTransform>
+                    <CompositeTransform x:Name="ProgressTransform" TranslateY="120" />
+                </ProgressRing.RenderTransform>
+            </ProgressRing>
+            <TextBlock Text="Getting Ready" />
+        </StackPanel>
     </Grid>
 
 </UserControl>
