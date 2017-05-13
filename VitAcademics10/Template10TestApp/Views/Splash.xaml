@@ -11,7 +11,7 @@
 
     <Grid Background="{StaticResource ExtendedSplashBackground}">
 
-        <!--<Canvas x:Name="rootCanvas"
+        <Canvas x:Name="rootCanvas"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
             <Canvas.Background>
@@ -22,9 +22,8 @@
                 <Image Source="ms-appx:///Assets/SplashScreen.png" ImageOpened="Image_Loaded" />
 
             </Viewbox>
-        </Canvas>-->
-        <Image x:Name="splashImage" Source="ms-appx:///Assets/AppLogo.png" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <StackPanel>
+        </Canvas>
+       <StackPanel>
             <ProgressRing x:Name="progressRing"
                       Width="50"
                       Height="50"
