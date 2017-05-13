@@ -26,7 +26,7 @@ namespace AcademicsLibrary.DataModel
             public string RegNo { get; set; }
             public string Campus { get; set; }
             public Status status = new Status();
-            public string Pass { get; private set; }
+            public string Pass { get; set; }
 
 
         public User(string campus, string reg, string pass,int code=5,string message = null )

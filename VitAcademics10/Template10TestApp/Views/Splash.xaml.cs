@@ -27,11 +27,11 @@ namespace Template10TestApp.Views
                 rootCanvas.Background = null;
                 splashImage.Visibility = Visibility.Visible;
             }
-            splashImage.Height = splashScreen.ImageLocation.Height;
-            splashImage.Width = splashScreen.ImageLocation.Width;
-            splashImage.SetValue(Canvas.TopProperty, splashScreen.ImageLocation.Top);
-            splashImage.SetValue(Canvas.LeftProperty, splashScreen.ImageLocation.Left);
-            ProgressTransform.TranslateY = splashImage.Height / 2;
+            //splashImage.Height = splashScreen.ImageLocation.Height;
+            //splashImage.Width = splashScreen.ImageLocation.Width;
+            //splashImage.SetValue(Canvas.TopProperty, splashScreen.ImageLocation.Top);
+            //splashImage.SetValue(Canvas.LeftProperty, splashScreen.ImageLocation.Left);
+            //ProgressTransform.TranslateY = splashImage.Height / 2;
         }
 
         private void Image_Loaded(object sender, RoutedEventArgs e)

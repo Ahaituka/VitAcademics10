@@ -1,4 +1,5 @@
 ﻿using AcademicsLibrary.DataModel;
+using AcademicsLibrary.Managers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,31 +14,30 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using AcademicsLibrary.Managers;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Template10TestApp.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class CourseDetails : Page
+    public sealed partial class Courses : Page
     {
-        public Course Course { get; set; }
-        public Course recieved { get; set; }
-        public List<Detail> attendanceDetails {get; set;}
-        public CourseDetails()
+        public List<Course> Course { get; set; }
+        public Course selected { get; set; }
+        public Courses()
         {
             this.InitializeComponent();
-            //Course_Name.Text = Course.course_title;
+            Course = DataManager.Refresh.courses;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void Course_ItemClick(object sender, ItemClickEventArgs e)
         {
-            recieved = DataManager.navData;
-            attendanceDetails = recieved.attendance.details;
-
+            //detailPresenter.Content = CourseDetails;
+            selected = (Course)e.ClickedItem;
+            DataManager.navData = selected;
+            this.Frame.Navigate(typeof(CourseDetails));
         }
     }
 }

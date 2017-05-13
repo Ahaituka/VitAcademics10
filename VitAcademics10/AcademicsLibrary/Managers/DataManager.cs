@@ -12,6 +12,7 @@ namespace AcademicsLibrary.Managers
 
         public static  string keyLargeObject = "data.txt";
        public static  StorageFolder  localFolder = ApplicationData.Current.LocalFolder;
+        public static Course navData;
 
 
 

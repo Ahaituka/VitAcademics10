@@ -4,36 +4,75 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:data="using:AcademicsLibrary.DataModel"
     xmlns:local="using:Template10TestApp.Views"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <Viewbox
-            Margin="0,0,0,0"
-            Width="200"
-            Height="200">
-                <Image x:Name="Ppic" Source="ms-appx:///Assets/DarkGray.png" />
-            </Viewbox>
-            <ListView ItemsSource="{x:Bind Course}">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="data:Detail">
-                        <StackPanel Orientation="Horizontal">
-                            <Grid Width="330">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{x:Bind date}" Grid.Column="0" HorizontalAlignment="Center"/>
-                                <TextBlock Text="{x:Bind status}" Grid.Column="1" HorizontalAlignment="Center"/>
-                            </Grid>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <StackPanel Background="DarkCyan">
                 
-            </ListView>
-            
-        </StackPanel>
+                
+                <Viewbox
+                Margin="0,0,0,0"
+                Width="200"
+                Grid.Row="0"
+                Height="200">
+
+                    <controls:RadialGauge
+                          x:Name="RadialGauge"
+                          Value="{x:Bind recieved.attendance.attendance_percentage }"
+                          Minimum="0"
+                          Maximum="100"
+                          StepSize="1"
+                          IsInteractive="False"
+                          TickSpacing="20"
+                          ScaleWidth="35"
+                          MinAngle="210"
+                          MaxAngle="150"
+                          Unit="Units"
+                          TickBrush="Gainsboro"
+                          ScaleTickBrush="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                          UnitBrush="Black"
+                          ValueBrush="Black" 
+                          NeedleWidth="5" 
+                          TickLength="0">
+
+                    </controls:RadialGauge>
+                </Viewbox>
+                
+
+                <TextBlock Text="{x:Bind recieved.course_title}" HorizontalAlignment="Center"></TextBlock>
+            </StackPanel>
+        </Grid>
+
+
+        <ListView ItemsSource="{x:Bind attendanceDetails}" ScrollViewer.VerticalScrollMode="Enabled"
+                          ScrollViewer.VerticalScrollBarVisibility="Visible"
+                          Grid.Row="1">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="data:Detail">
+                    <Grid Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind date}" Grid.Column="0" HorizontalAlignment="Left" Margin="30"/>
+                        <TextBlock Text="{x:Bind status}" Grid.Column="1" HorizontalAlignment="Right" Margin="30"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

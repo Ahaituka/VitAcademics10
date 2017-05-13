@@ -11,45 +11,186 @@
     xmlns:data="using:AcademicsLibrary.DataModel"
     xmlns:local="using:Template10TestApp.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls.Primitives"
     xmlns:telerikDataViz="using:Telerik.UI.Xaml.Controls.DataVisualization"
     xmlns:vm="using:Template10TestApp.ViewModels"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
     mc:Ignorable="d">
     <Page.DataContext>
         <vm:MainPageViewModel x:Name="ViewModel" />
     </Page.DataContext>
 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <Grid.ChildrenTransitions>
-                <TransitionCollection>
-                    <EntranceThemeTransition />
-                </TransitionCollection>
-            </Grid.ChildrenTransitions>
+
+        <Grid
+            Name="LoadingGrid"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="White"
+            Visibility="Collapsed"
+            RelativePanel.AlignVerticalCenterWithPanel="True"
+            RelativePanel.AlignHorizontalCenterWithPanel="True">
+            <StackPanel>
+                <ProgressRing Margin="0,0,0,5" IsActive="True" />
+                <TextBlock Text="Refreshing Your Contect" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Background="LightGray">
+            
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
+            
+            <AppBar Grid.Row="0" Visibility="Visible">
+                <StackPanel>
+                    <AppBarButton Name="overlay"  Icon="FullScreen"  Label="Picture in Picture" Click="overlay_Click" />
+                    <AppBarButton Name="NormalMode" Icon="FontDecrease" Click="NormalMode_Click" />
+                </StackPanel>
+            </AppBar>
 
-            <Pivot Grid.Row="1">
-                <PivotItem Header="Courses">
-                    <ContentPresenter>
-                        <ListView ItemClick="Course_ItemClick" ItemsSource="{x:Bind Course}">
+            <Pivot Background="LightGray" Name="RootGrid" Grid.Row="1">
+                <PivotItem Background="GhostWhite" Header="Home">
+                    <ScrollViewer>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid x:Name="MyHead"
+              MinHeight="250"
+              Background="DarkCyan">
+                                <StackPanel VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      Margin="20,0">
+                                    <TextBlock Text="Hello VITian"
+                       TextAlignment="Center"
+                       FontWeight="Bold"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Foreground="White"
+                       Margin="0,5" />
+                                    <TextBlock Name="greetbox"
+                       Style="{ThemeResource SubtitleTextBlockStyle}"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center" />
+                                </StackPanel>
+                            </Grid>
+                            <GridView Grid.Row="1"
+                                  animations:ReorderGridAnimation.Duration="300"
+                                  HorizontalContentAlignment="Center"
+                                  HorizontalAlignment="Center"
+                                  VerticalContentAlignment="Center">
+
+                                <Grid>
+                                    <telerik:RadHubTile 
+                                            Name="courseTile" Title="Courses" Tapped="courseTile_Tapped">
+
+                                    </telerik:RadHubTile>
+                                </Grid>
+                                <Grid>
+                                    <telerik:RadHubTile Title="My Profile">
+
+                                    </telerik:RadHubTile >
+                                </Grid>
+                                <Grid>
+                                    <telerik:RadHubTile >
+
+                                    </telerik:RadHubTile>
+                                </Grid>
+                                <Grid>
+                                    <telerik:RadHubTile>
+
+                                    </telerik:RadHubTile>
+                                </Grid>
+                            </GridView>
+                        </Grid>
+                    </ScrollViewer>
+                </PivotItem>
+                <PivotItem Header="Today">
+                    <Grid>
+                        <ListView ItemClick="Course_ItemClick" ItemsSource="{x:Bind Course}" IsItemClickEnabled="True"
+                  Background="LightGray" Name="cList" Foreground="Black">
+                            <Interactivity:Interaction.Behaviors>
+                                <behaviors:FadeHeaderBehavior />
+                            </Interactivity:Interaction.Behaviors>
+
+                            <!-- Header Panel -->
+
+                            <ListView.Header>
+                                <Grid x:Name="MyHeaderGrid"
+                                    MinHeight="250"
+                                    Background="DarkCyan">
+                                    <StackPanel VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Margin="20,0">
+                                        <TextBlock Text="What's Up Today ?"
+                       TextAlignment="Center"
+                       FontWeight="Bold"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Foreground="White"
+                       Margin="0,5" />
+                                        <TextBlock Name="grettbox"
+                       Style="{ThemeResource SubtitleTextBlockStyle}"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center" />
+                                    </StackPanel>
+                                </Grid>
+                            </ListView.Header>
+
+
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="data:Course">
-                                    <StackPanel>
-                                        <TextBlock Text="{x:Bind course_title}" />
-                                    </StackPanel>
+                                    <Grid MinHeight="100">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock Name="Aname" Text="{x:Bind course_title}"
+                       Grid.Column="1"
+                       TextTrimming="CharacterEllipsis"
+                       VerticalAlignment="Center"
+                       Margin="10"/>
+
+                                        <TextBlock Name="Astatus" Text="{x:Bind subject_type}"
+                       Grid.Column="2"
+                       TextTrimming="CharacterEllipsis"
+                       VerticalAlignment="Center" />
+
+                                    </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
+
+
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment"
+                  Value="Stretch" />
+                                    <Setter Property="Padding"
+                  Value="5" />
+                                    <Setter Property="Background"
+                                        Value="White"/>
+                                    <Setter Property="Foreground"
+                                        Value="Black" />
+                                    <Setter Property="Margin"
+                                        Value="10" />
+                                </Style>
+
+
+                            </ListView.ItemContainerStyle>
+
+
                         </ListView>
-                    </ContentPresenter>
+                    </Grid>
                 </PivotItem>
-                <PivotItem Header="Second Pivot Element" />
             </Pivot>
-
-
         </Grid>
-    </RelativePanel>
+    </Grid>
 </Page>
 

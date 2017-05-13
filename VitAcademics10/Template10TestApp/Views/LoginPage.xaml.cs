@@ -41,7 +41,6 @@ namespace Template10TestApp.Views
         {
             this.InitializeComponent();
             this.DataContext = this;
-
         }
 
 
@@ -59,7 +58,6 @@ namespace Template10TestApp.Views
             if (login == DataManager.StatusCode.Success)
             {
                 Refresh();
-
             }
             else
             {
@@ -81,11 +79,9 @@ namespace Template10TestApp.Views
 
         private async void Refresh()
         {            
-            var refresh = await DataManager.LoginAsync(campus, Registration, Password.Password);
+            var refresh = await DataManager.RefreshDataAsync(campus, Registration, Password.Password);
 
-
-
-            if (login == DataManager.StatusCode.Success)
+            if (refresh == DataManager.StatusCode.Success)
             {
                 Shell.HamburgerMenu.IsFullScreen = false;
                 var nav = WindowWrapper.Current().NavigationServices.FirstOrDefault();
