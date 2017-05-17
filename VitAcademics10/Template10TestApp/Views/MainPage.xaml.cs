@@ -20,6 +20,7 @@ using Template10.Common;
 using AcademicsLibrary.Helpers;
 using Windows.Storage;
 using Windows.UI.ViewManagement;
+using Microsoft.Toolkit.Uwp.UI;
 
 namespace Template10TestApp.Views
 {
@@ -28,6 +29,7 @@ namespace Template10TestApp.Views
         public User Details { get; set; }
         public List<Course> Course { get; set; }
         public Course selected { get; set; }
+        public AdvancedCollectionView acv { get; set; }
 
         public MainPage()
         {
@@ -38,6 +40,10 @@ namespace Template10TestApp.Views
             Course = DataManager.Refresh.courses;
             greetbox.Text = DataManager.Refresh.name.ToString();
             var time = DateTime.Now;
+
+            acv = new AdvancedCollectionView(Course);
+            acv.SortDescriptions.Add(new SortDescription("course_title", SortDirection.Ascending));
+
             if (time.Hour > 19 || time.Hour < 5)
             {
                 RootGrid.Background = (SolidColorBrush)Resources["NightColor"];

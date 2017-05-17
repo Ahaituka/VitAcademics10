@@ -137,8 +137,8 @@
                 </PivotItem>
                 <PivotItem Header="Today" Foreground="White">
                     <Grid>
-                        <ListView ItemClick="Course_ItemClick" ItemsSource="{x:Bind Course}" IsItemClickEnabled="True"
-                  Background="LightGray" Name="cList" Foreground="Black">
+                        <ListView ItemClick="Course_ItemClick" ItemsSource="{x:Bind acv}" IsItemClickEnabled="True"
+                  Background="{x:Bind RootGrid.Background}" Name="cList" Foreground="Black">
                             <Interactivity:Interaction.Behaviors>
                                 <behaviors:FadeHeaderBehavior />
                             </Interactivity:Interaction.Behaviors>
@@ -148,7 +148,7 @@
                             <ListView.Header>
                                 <Grid x:Name="MyHeaderGrid"
                                     MinHeight="250"
-                                    Background="DarkCyan">
+                                    Background="{x:Bind RootGrid.Background}">
                                     <StackPanel VerticalAlignment="Center"
                                               HorizontalAlignment="Center"
                                               Margin="20,0">
