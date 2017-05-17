@@ -15,6 +15,9 @@ using AcademicsLibrary.NetworkService;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 using AcademicsLibrary.Helpers;
+using Windows.Foundation.Metadata;
+using Windows.UI.ViewManagement;
+using Windows.ApplicationModel.Core;
 
 namespace Template10TestApp
 {
@@ -34,6 +37,7 @@ namespace Template10TestApp
         {
             InitializeComponent();
             SplashFactory = (e) => new Views.Splash(e);
+            
 
             #region app settings
 
@@ -47,6 +51,22 @@ namespace Template10TestApp
             AutoExtendExecutionSession = true;
 
             #endregion
+
+        }
+
+        //For Fluent TitleBar
+
+        private static void SetupTitlebar()
+        {
+            if (ApiInformation.IsTypePresent("Windows.UI.ViewManagement.ApplicationView"))
+            {
+                var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                if (titleBar != null)
+                {
+                    CoreApplicationViewTitleBar coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+                    coreTitleBar.ExtendViewIntoTitleBar = false; //do true for Fluent design
+                }
+            }
         }
 
         public override UIElement CreateRootElement(IActivatedEventArgs e)
@@ -62,7 +82,7 @@ namespace Template10TestApp
 
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-            
+            SetupTitlebar();
             IPropertySet roamingProperties = ApplicationData.Current.RoamingSettings.Values;
             if (roamingProperties.ContainsKey("HasBeenHereBefore"))
             {

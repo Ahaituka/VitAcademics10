@@ -37,6 +37,15 @@ namespace Template10TestApp.Views
             Details = DataManager.user;
             Course = DataManager.Refresh.courses;
             greetbox.Text = DataManager.Refresh.name.ToString();
+            var time = DateTime.Now;
+            if (time.Hour > 19 || time.Hour < 5)
+            {
+                RootGrid.Background = (SolidColorBrush)Resources["NightColor"];
+                MyHead.Background = (SolidColorBrush)Resources["NightColor"];
+                var k = welcomeImage.Background;
+                welcomeImage.Background = (ImageBrush)Resources["NightImage"];
+            }
+
             if (ApplicationView.GetForCurrentView().IsViewModeSupported(ApplicationViewMode.CompactOverlay))
             {
                 overlay.Visibility = Visibility.Visible;

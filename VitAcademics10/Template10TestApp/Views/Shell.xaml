@@ -13,19 +13,22 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
     <Grid>
-        <!--<Controls:PageHeader x:Name="MyHeader" Visibility="Visible">
+        
+        <!--<Controls:PageHeader x:Name="MyHeader" Content="" Visibility="Visible">
             <Controls:PageHeader.PrimaryCommands>
                 <AppBarButton Icon="People" Label="MyProfile" />
                 <AppBarButton Icon="Setting" Label="Settings" />
-                --><!--  <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" /  --><!--
             </Controls:PageHeader.PrimaryCommands>
         </Controls:PageHeader>-->
+        
         <Controls:HamburgerMenu x:Name="MyHamburgerMenu" Background="DarkCyan"
-                                AccentColor="DarkCyan"
-                                HamburgerBackground="DarkCyan"
-                                NavAreaBackground="DarkCyan"
+                                AccentColor="{ThemeResource SystemListMediumColor}"
+                                Opacity="20"
+                                NavAreaBackground="Transparent"
+                                HamburgerBackground="Transparent"
+                                
                                 Foreground="White"
-                                NavButtonBackground="DarkCyan">
+                                >
             <Controls:HamburgerMenu.PrimaryButtons>
                 <!--  mainpage button  -->
                 <Controls:HamburgerButtonInfo ClearHistory="True" PageType="views:MainPage">

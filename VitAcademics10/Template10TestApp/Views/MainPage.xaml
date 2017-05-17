@@ -21,6 +21,11 @@
         <vm:MainPageViewModel x:Name="ViewModel" />
     </Page.DataContext>
 
+    <Page.Resources>
+        <SolidColorBrush x:Key="NightColor" Color="#361c65" />
+        <ImageBrush x:Key="NightImage" ImageSource="ms-appx:///Assets/ncloud.png" Stretch="Uniform"/>
+    </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
@@ -38,47 +43,67 @@
             </StackPanel>
         </Grid>
 
-        <Grid Background="LightGray">
+        <Grid >
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             
-            <AppBar Grid.Row="0" Visibility="Visible">
+            <!--<AppBar Grid.Row="0" Visibility="Visible">
                 <StackPanel>
                     <AppBarButton Name="overlay"  Icon="FullScreen"  Label="Picture in Picture" Click="overlay_Click" />
                     <AppBarButton Name="NormalMode" Icon="FontDecrease" Click="NormalMode_Click" />
                 </StackPanel>
-            </AppBar>
+            </AppBar>-->
 
-            <Pivot Background="LightGray" Name="RootGrid" Grid.Row="1">
-                <PivotItem Background="GhostWhite" Header="Home">
+            <controls:PageHeader x:Name="MyHeader" Background="{x:Bind RootGrid.Background}" Foreground="White" Visibility="Visible">
+                <controls:PageHeader.PrimaryCommands>
+                    <AppBarButton Name="overlay" Icon="Caption" Label="Compact Overlay" Click="overlay_Click" Foreground="White" />
+                    <AppBarButton Name="NormalMode" Icon="BackToWindow" Click="NormalMode_Click" Foreground="White"/>
+                    <AppBarButton Icon="People" Label="MyProfile" Foreground="White"/>
+                    <AppBarButton Icon="Setting" Label="Settings" Foreground="White"/>
+                </controls:PageHeader.PrimaryCommands>
+            </controls:PageHeader>
+
+            <Pivot Background="#6cd3e7" Name="RootGrid" Grid.Row="1">
+                <PivotItem Background="GhostWhite" Header="Home" Foreground="White">
                     <ScrollViewer>
-                        <Grid>
+                        <Grid
+                            >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"></RowDefinition>
                                 <RowDefinition Height="*"></RowDefinition>
                             </Grid.RowDefinitions>
+
                             <Grid x:Name="MyHead"
-              MinHeight="250"
-              Background="DarkCyan">
+                                MinHeight="250"
+                                Background="#6cd3e7"
+                            >
+                                <Grid x:Name="welcomeImage">
+                                    <Grid.Background>
+                                        <ImageBrush ImageSource="ms-appx:///Assets/mcloud.png" Stretch="Uniform"/>
+                                    </Grid.Background>
+                                </Grid>
                                 <StackPanel VerticalAlignment="Center"
-                      HorizontalAlignment="Center"
-                      Margin="20,0">
+                                        HorizontalAlignment="Center"
+                                        Margin="20,0">
                                     <TextBlock Text="Hello VITian"
-                       TextAlignment="Center"
-                       FontWeight="Bold"
-                       Style="{ThemeResource TitleTextBlockStyle}"
-                       Foreground="White"
-                       Margin="0,5" />
-                                    <TextBlock Name="greetbox"
-                       Style="{ThemeResource SubtitleTextBlockStyle}"
-                       Foreground="White"
-                       VerticalAlignment="Center"
-                       TextAlignment="Center" />
+                                        TextAlignment="Center"
+                                        FontWeight="Bold"
+                                        Style="{ThemeResource TitleTextBlockStyle}"
+                                        Foreground="White"
+                                        Margin="0,5" />
+
+                                    <TextBlock x:Name="greetbox"
+                                           Style="{ThemeResource SubtitleTextBlockStyle}"
+                                           Foreground="White"
+                                           VerticalAlignment="Center"
+                                           TextAlignment="Center" />
                                 </StackPanel>
+
                             </Grid>
+                            
                             <GridView Grid.Row="1"
                                   animations:ReorderGridAnimation.Duration="300"
                                   HorizontalContentAlignment="Center"
@@ -110,7 +135,7 @@
                         </Grid>
                     </ScrollViewer>
                 </PivotItem>
-                <PivotItem Header="Today">
+                <PivotItem Header="Today" Foreground="White">
                     <Grid>
                         <ListView ItemClick="Course_ItemClick" ItemsSource="{x:Bind Course}" IsItemClickEnabled="True"
                   Background="LightGray" Name="cList" Foreground="Black">

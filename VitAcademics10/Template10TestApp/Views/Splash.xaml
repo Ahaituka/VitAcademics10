@@ -13,15 +13,10 @@
 
         <Canvas x:Name="rootCanvas"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center">
+                VerticalAlignment="Center" Opacity="0">
             <Canvas.Background>
-                <ImageBrush ImageSource="ms-appx:///Assets/SplashScreen.png" Stretch="Uniform" />
+                <ImageBrush ImageSource="ms-appx:///Assets/SplashScreen.png" Stretch="Uniform" Opacity="0"/>
             </Canvas.Background>
-            <Viewbox x:Name="splashImage">
-
-                <Image Source="ms-appx:///Assets/SplashScreen.png" ImageOpened="Image_Loaded" />
-
-            </Viewbox>
         </Canvas>
        <StackPanel>
             <ProgressRing x:Name="progressRing"
@@ -37,7 +32,6 @@
                     <CompositeTransform x:Name="ProgressTransform" TranslateY="120" />
                 </ProgressRing.RenderTransform>
             </ProgressRing>
-            <TextBlock Text="Getting Ready" />
         </StackPanel>
     </Grid>
 
